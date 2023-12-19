@@ -49,15 +49,21 @@ const StyledRating = styled(Rating)(({ theme }) => ({
 
 export default function RatingScaleQuestion(){
 
+    function onClickHandler(){
+        console.log('hello');
+    }
+
+
     return(
         <div id="survey-questions">
-             <h3> What would you rate your expereince?</h3>
+             <h3  > What would you rate your expereince?</h3>
         <StyledRating
         name="highlight-selected-only"
         defaultValue={2}
         IconContainerComponent={IconContainer}
         getLabelText={(value) => customIcons[value].label}
         highlightSelectedOnly
+        onClick={onClickHandler}
       />
         </div>
         

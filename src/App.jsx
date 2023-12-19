@@ -7,11 +7,11 @@ import RatingScaleQuestion from './components/RatingScaleQuestion';
 function App() {
 
   return (
-    <bodgy>
+    <body>
       <image src="surveyLogo"></image>
      <Header title="Survey"></Header>
-     <RatingScaleQuestion></RatingScaleQuestion>
-    </bodgy>
+     <RatingScaleQuestion ></RatingScaleQuestion>
+    </body>
   )
 }
 

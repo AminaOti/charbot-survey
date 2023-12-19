@@ -50,8 +50,8 @@ const StyledRating = styled(Rating)(({ theme }) => ({
 export default function RatingScaleQuestion(){
 
     return(
-        <>
-         <p> What would you rate your expereince?</p>
+        <div id="survey-questions">
+             <h3> What would you rate your expereince?</h3>
         <StyledRating
         name="highlight-selected-only"
         defaultValue={2}
@@ -59,7 +59,9 @@ export default function RatingScaleQuestion(){
         getLabelText={(value) => customIcons[value].label}
         highlightSelectedOnly
       />
-        </>
+        </div>
+        
+   
      
        
     )

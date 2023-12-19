@@ -11,7 +11,7 @@ import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfi
 
 const StyledRating = styled(Rating)(({ theme }) => ({
     '& .MuiRating-iconEmpty .MuiSvgIcon-root': {
-      color: theme.palette.action.disabled,
+      color: "white",
     },
   }));
 
@@ -51,7 +51,7 @@ export default function RatingScaleQuestion(){
 
     return(
         <>
-         <p> How would you rate this website?</p>
+         <p> What would you rate your expereince?</p>
         <StyledRating
         name="highlight-selected-only"
         defaultValue={2}

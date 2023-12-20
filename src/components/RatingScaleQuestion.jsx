@@ -55,7 +55,7 @@ export default function RatingScaleQuestion(){
 
 
     return(
-        <div id="survey-questions">
+        <div id="rating-scale-question">
              <h3  > What would you rate your expereince?</h3>
         <StyledRating
         name="highlight-selected-only"
@@ -65,10 +65,6 @@ export default function RatingScaleQuestion(){
         highlightSelectedOnly
         onClick={onClickHandler}
       />
-        </div>
-        
-   
-     
-       
+     </div>
     )
 }

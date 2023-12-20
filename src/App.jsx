@@ -1,6 +1,8 @@
 // import './App.css'
 import Header from './components/Header';
 import RatingScaleQuestion from './components/RatingScaleQuestion';
+import OpenEndedQuestion from './components/OpenEndedQuestion';
+
 
 
 
@@ -8,9 +10,11 @@ function App() {
 
   return (
     <body>
-      <image src="surveyLogo"></image>
      <Header title="Survey"></Header>
-     <RatingScaleQuestion ></RatingScaleQuestion>
+        <div id="survey-questions">
+          <RatingScaleQuestion ></RatingScaleQuestion>
+          <OpenEndedQuestion></OpenEndedQuestion>
+        </div>
     </body>
   )
 }

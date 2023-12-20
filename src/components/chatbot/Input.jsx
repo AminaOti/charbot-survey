@@ -1,28 +1,31 @@
 import React, { useState } from "react";
 
-export default function Input({ onSend}) {
+export default function Input({ onSend }) {
   const [text, setText] = useState("");
 
   const handleInputChange = e => {
     setText(e.target.value);
   };
 
-//   const handleSend = e => {
-//     e.preventDefault();
-//     onSend(text);
-//     setText("");
-//   };
+  const handleSend = e => {
+    console.log('hello')
+    console.log(text)
+    e.preventDefault();
+    onSend(text);
+    setText("");
+  };
 
   return (
     <div className="input">
-      <form>
+      <form onSubmit={handleSend}>
         <input
           type="text"
           onChange={handleInputChange}
           value={text}
-          placeholder="Enter your answer here"
+          placeholder="Enter your message here"
         />
-       <button>
+        <button 
+        >
           <svg
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +40,6 @@ export default function Input({ onSend}) {
             </g>
           </svg>
         </button>
-       
       </form>
     </div>
   );

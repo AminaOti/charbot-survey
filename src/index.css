@@ -78,7 +78,6 @@ input {
   border: none;
   border-radius: 5px;
   /* background: linear-gradient(180deg, #81f1fb 0%, #73d2f8 100%); */
- 
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
@@ -113,7 +112,7 @@ button:focus {
   padding: 15px 10px;
   margin: 10px;
   border-radius: 20px 20px 1px 20px;
-  background: #cccccc;
+  background: #6cb7f5;
   color: black;
 }
 
@@ -131,6 +130,7 @@ button:focus {
   outline: none;
   padding: 16px 52px 16px 10px;
   width: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .input > form > button {
@@ -152,7 +152,6 @@ button:focus {
   font-family: monospace;
   border-radius: 10px;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.15);
-
   text-align: center;
   display: flex;
   flex-flow: column;
@@ -168,6 +167,7 @@ button:focus {
   display: flex;
   flex-direction: column;
   padding: 10px 0px;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .message-container {
@@ -179,7 +179,7 @@ button:focus {
   padding: 15px 20px;
   margin: 5px;
   border-radius: 20px 20px 20px 1px;
-  background: #00aaa5;
+  background: #9d5af5;
   color: white;
   min-width: 40px;
 }

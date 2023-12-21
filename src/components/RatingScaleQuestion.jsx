@@ -47,7 +47,7 @@ const StyledRating = styled(Rating)(({ theme }) => ({
     value: PropTypes.number.isRequired,
   };
 
-export default function RatingScaleQuestion(){
+export default function RatingScaleQuestion({onNext}){
 
     function onClickHandler(){
         console.log('hello');
@@ -55,16 +55,19 @@ export default function RatingScaleQuestion(){
 
 
     return(
+      <>
         <div id="rating-scale-question">
              <h1  > What would you rate your expereince?</h1>
-        <StyledRating
-        name="highlight-selected-only"
-        defaultValue={2}
-        IconContainerComponent={IconContainer}
-        getLabelText={(value) => customIcons[value].label}
-        highlightSelectedOnly
-        onClick={onClickHandler}
-      />
+              <StyledRating
+              name="highlight-selected-only"
+              defaultValue={2}
+              IconContainerComponent={IconContainer}
+              getLabelText={(value) => customIcons[value].label}
+              highlightSelectedOnly
+              onClick={onClickHandler}
+            />
      </div>
+      <button onClick={onNext}> Next </button>
+      </>
     )
 }

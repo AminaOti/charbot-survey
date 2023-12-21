@@ -11,10 +11,9 @@ const FIRST_QUESTION_NUMBER = 1;
 
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState(FIRST_QUESTION_NUMBER);
-  let quizQuestion = (<RatingScaleQuestion></RatingScaleQuestion>)
+  let quizQuestion = (<RatingScaleQuestion onNext={handleNextQuestion}></RatingScaleQuestion>)
 
-
-  function handleNext(){
+  function handleNextQuestion(){
     let nextQuestion = currentQuestion +1;
     if(nextQuestion>2)(
       nextQuestion = 2
@@ -34,7 +33,6 @@ function App() {
         <div id="survey-questions">
           <p>Question {currentQuestion}/{NUMBER_OF_QUESTIONS}</p>
           {quizQuestion}
-          <button onClick={handleNext}> Next </button>
         </div>
     </body>
   )

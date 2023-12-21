@@ -7,12 +7,17 @@ export default function Input({ onSend }) {
     setText(e.target.value);
   };
 
+
+  const checkEmptyForNonString = () => text.length>0;
+  
+
   const handleSend = e => {
-    console.log('hello')
-    console.log(text)
+    checkEmptyForNonString()
     e.preventDefault();
-    onSend(text);
-    setText("");
+    if(checkEmptyForNonString()){
+      onSend(text);
+      setText("");
+    }
   };
 
   return (

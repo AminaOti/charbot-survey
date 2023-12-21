@@ -24,11 +24,8 @@ export default function OpenEndedQuestion(){
     return(
         <>
             <h3> What is the reason for your rating?</h3>
-                <div className="chatbot">
-                    <UserMessage></UserMessage>
-                    <Messages messages={messages} />
-                    <Input onSend={send} ></Input>
-                 </div>
+            <Messages messages={messages} />
+            <Input onSend={send} ></Input>
             </>
     )
 }

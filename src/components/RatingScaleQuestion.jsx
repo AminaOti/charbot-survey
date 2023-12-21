@@ -56,7 +56,7 @@ export default function RatingScaleQuestion(){
 
     return(
         <div id="rating-scale-question">
-             <h3  > What would you rate your expereince?</h3>
+             <h1  > What would you rate your expereince?</h1>
         <StyledRating
         name="highlight-selected-only"
         defaultValue={2}

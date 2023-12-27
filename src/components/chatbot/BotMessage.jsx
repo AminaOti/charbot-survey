@@ -1,8 +1,9 @@
-//import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import {sendChatToLlm} from "../../../apiService"
 
-export default function BotMessage({ message }) {
-  //const [isLoading, setLoading] = useState(true);
-  //const [message, setMessage] = useState("");
+export default function BotMessage({ userInput }) {
+  const [isLoading, setLoading] = useState(true);
+  const [message, setMessage] = useState("");
 
 //   useEffect(() => {
 //     async function loadMessage() {
@@ -13,10 +14,19 @@ export default function BotMessage({ message }) {
 //     loadMessage();
 //   }, [fetchMessage]);
 
+useEffect(() => {
+  async function loadMessage() {
+    const msg = await sendChatToLlm(userInput);
+    setLoading(false);
+    setMessage(msg);
+  }
+  loadMessage();
+}, [userInput]);
+
   return (
     <div className="message-container">
-       <div className="bot-message">
-       {message}
+       <div className={`bot-message ${isLoading? "" : "received"}`}>
+       <div className="">{isLoading ? "watson thinking..." : message}</div>
         </div> 
     </div>
   );

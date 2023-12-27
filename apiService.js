@@ -10,7 +10,7 @@ export const sendChatToLlm = async (messsage) => {
   const response = await apiService.post(API_BASE_URL, {
     message: messsage,
   });
-  return response.data;
+  return response.data.response;
 };
 
 const callFetchSomeData = async () => {

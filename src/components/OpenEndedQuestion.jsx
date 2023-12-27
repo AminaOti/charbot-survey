@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import UserMessage from './chatbot/UserMessage'
 import Input from './chatbot/Input'
 import Messages from './chatbot/Messages'
@@ -16,7 +16,7 @@ export default function OpenEndedQuestion(){
             <UserMessage key={messages.length + 1} text={text} />,
             <BotMessage
             key={messages.length + 2}
-            message={text}
+            userInput={text}
           />
           );
           setMessages(newMessages);

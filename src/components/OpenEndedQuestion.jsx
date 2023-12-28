@@ -11,7 +11,7 @@ export default function OpenEndedQuestion({onSubmit}){
     const [isLoading, setIsLoading] = useState(false);
     const [chatLog, setChatLog] = useState([]);
     const [chatFinsihed, setChatFinsihed] = useState(false);
-    const finalQuestion = chatLog.length === MAX_NUMBER_OF_QUESTIONS +1; 
+    const isFinalQuestion = chatLog.length === MAX_NUMBER_OF_QUESTIONS +1; 
 
 
     const send = async text => {
@@ -26,15 +26,15 @@ export default function OpenEndedQuestion({onSubmit}){
       setIsLoading(true);
 
       //get data from chatbot
-      const botMesagge = 'hello'//await sendChatToLlm(text, false)
+      console.log(isFinalQuestion)
+      const botMesagge = await sendChatToLlm(text, isFinalQuestion)
       setChatLog((prevChatLog)=>[...prevChatLog, {user:false, message: botMesagge}])
       setIsLoading(false)
 
-      if(finalQuestion ){
+      if(isFinalQuestion){
         setChatFinsihed(true);
         return;
       }
-
       };
 
 

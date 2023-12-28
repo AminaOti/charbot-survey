@@ -31,7 +31,6 @@ function App() {
     quizQuestion= (<h1> Survey submitted, thank you!</h1>)
   }
 
-
   return (
     <body>
      <Header title="Survey"></Header>

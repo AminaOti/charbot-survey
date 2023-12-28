@@ -6,12 +6,21 @@ const apiService = axios.create({
   baseURL: API_BASE_URL,
 });
 
-export const sendChatToLlm = async (messsage) => {
+export const sendChatToLlm = async (messsage, isLastMessage) => {
   console.log("qqqq");
+
   try {
-    const response = await apiService.post(API_BASE_URL, {
-      message: messsage,
-    });
+    const response = await axios.post(
+      API_BASE_URL,
+      {
+        message: messsage,
+        isLastMessage: isLastMessage,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+
     return response.data.response;
   } catch (error) {
     console.log(error);

@@ -6,7 +6,7 @@ import {sendChatToLlm} from "../../apiService"
 const MAX_NUMBER_OF_QUESTIONS = 3;
 
 
-export default function OpenEndedQuestion({onSubmit}){
+export default function OpenEndedQuestion({onSubmit, rating}){
    
     const [isLoading, setIsLoading] = useState(false);
     const [chatLog, setChatLog] = useState([]);
@@ -26,8 +26,9 @@ export default function OpenEndedQuestion({onSubmit}){
       setIsLoading(true);
 
       //get data from chatbot
-      console.log(isFinalQuestion)
-      const botMesagge = await sendChatToLlm(text, isFinalQuestion)
+      const questionNumber = chatLog.length/2;
+      console.log(`question number ${questionNumber}`)
+      const botMesagge = await sendChatToLlm(text, rating, isFinalQuestion, questionNumber)
       setChatLog((prevChatLog)=>[...prevChatLog, {user:false, message: botMesagge}])
       setIsLoading(false)
 
@@ -40,7 +41,7 @@ export default function OpenEndedQuestion({onSubmit}){
 
     return(
         <>
-            <h3> What is the reason for your rating?</h3>
+            <h3> {`Why was your expereince a ${rating} out of 5`}?</h3>
             <div className="chatbot">
                 { chatLog.map((mes, index) => (
                   <div className="messages">

@@ -1,5 +1,5 @@
 // import './App.css'
-import {useState} from 'react'
+import {useState,useRef} from 'react'
 import Header from './components/Header';
 import RatingScaleQuestion from './components/RatingScaleQuestion';
 import OpenEndedQuestion from './components/OpenEndedQuestion';
@@ -12,18 +12,23 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(FIRST_QUESTION_NUMBER);
   const finishedSurvey = currentQuestion>FIRST_QUESTION_NUMBER+1
   const secondQuestion  = currentQuestion==FIRST_QUESTION_NUMBER+1
+  const rating = useRef('')
 
   function handleNextQuestion(){
     let nextQuestion = currentQuestion +1;
     setCurrentQuestion(nextQuestion);
   }
 
+  function  updatedRating(value){
+    rating.current = value;
+  }
 
-  let quizQuestion = (<RatingScaleQuestion onNext={handleNextQuestion}></RatingScaleQuestion>)
+
+  let quizQuestion = (<RatingScaleQuestion onNext={handleNextQuestion} updateRating={updatedRating}></RatingScaleQuestion>)
 
   if(secondQuestion)
   {
-    quizQuestion= (<OpenEndedQuestion onSubmit={handleNextQuestion}></OpenEndedQuestion>)
+    quizQuestion= (<OpenEndedQuestion onSubmit={handleNextQuestion} rating={rating.current}></OpenEndedQuestion>)
   }
 
   if(finishedSurvey)

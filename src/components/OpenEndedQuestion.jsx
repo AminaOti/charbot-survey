@@ -1,26 +1,36 @@
 import { useState } from "react";
 import UserMessage from './chatbot/UserMessage'
 import Input from './chatbot/Input'
-import Messages from './chatbot/Messages'
 import BotMessage from './chatbot/BotMessage'
+import {sendChatToLlm} from "../../apiService"
 const MAX_NUMBER_OF_QUESTIONS = 3;
 
-export default function OpenEndedQuestion(){
-    const [messages, setMessages] = useState([]);
 
+export default function OpenEndedQuestion({onSubmit}){
+   
+    const [isLoading, setIsLoading] = useState(false);
+    const [chatLog, setChatLog] = useState([]);
+    const [displaySubmit, setdisplaySubmit] = useState(false);
 
     const send = async text => {
-        if(messages.length/2 <= MAX_NUMBER_OF_QUESTIONS-1){
-          console.log(messages.length)
-          const newMessages = messages.concat(
-            <UserMessage key={messages.length + 1} text={text} />,
-            <BotMessage
-            key={messages.length + 2}
-            userInput={text}
-          />
-          );
-          setMessages(newMessages);
-        } 
+      if(chatLog.length/2 >MAX_NUMBER_OF_QUESTIONS-1 ){
+        return;
+      }
+
+      // Add user chat to log
+      setChatLog((prevChatLog) => [...prevChatLog, { user: true, message: text }])
+
+      //Set isLoading
+      setIsLoading(true);
+
+      //get data from chatbot
+      const botMesagge = await sendChatToLlm(text, false)
+      setChatLog((prevChatLog)=>[...prevChatLog, {user:false, message: botMesagge}])
+      setIsLoading(false)
+
+      if(chatLog.length === 4 ){
+        setdisplaySubmit(true);
+      }
       };
 
 
@@ -28,8 +38,15 @@ export default function OpenEndedQuestion(){
         <>
             <h3> What is the reason for your rating?</h3>
             <div className="chatbot">
-              <Messages messages={messages} />
-              <Input onSend={send} ></Input>
+                { chatLog.map((mes, index) => (
+                  <div className="messages">
+                    {mes.user && <UserMessage key={index} text={mes.message} /> }
+                    {!mes.user && <BotMessage key={index} userInput={mes.message} />}
+                  </div>               
+                ))}
+                {isLoading &&<p>...watson is thinking</p>}
+                 <Input onSend={send} finishedQuestions={displaySubmit}></Input>
+                {displaySubmit&&<button onClick={onSubmit}> Sumbit </button>}
             </div>
            
             </>

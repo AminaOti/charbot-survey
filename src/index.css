@@ -104,7 +104,7 @@ button:focus {
 
 .chatbot {
   font-family: monospace;
-  flex-flow: column;
+  flex-flow: column wrap;
   width: 60%;
   overflow: hidden;
   margin: auto
@@ -124,10 +124,6 @@ button:focus {
 }
 
 .bot-message {
-  text-align: left;
-}
-
-.bot-message.received {
   float: left;
   padding: 15px 20px;
   margin: 5px;
@@ -142,6 +138,7 @@ button:focus {
   position: relative;
 }
 
+
 .input > form > input[type="text"] {
   font-size: 16px;
   border: 0;
@@ -155,6 +152,21 @@ button:focus {
   width: 100%;
   -webkit-appearance: none;
 }
+
+.input > form > input[type="text"]:disabled {
+  font-size: 16px;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: none;
+  box-sizing: border-box;
+  opacity: 1;
+  outline: none;
+  padding: 16px 52px 16px 10px;
+  width: 100%;
+  background-color: grey;
+  -webkit-appearance: none;
+}
+
 
 .input > form > input:focus {
   outline: none;

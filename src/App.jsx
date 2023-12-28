@@ -15,15 +15,21 @@ function App() {
 
   function handleNextQuestion(){
     let nextQuestion = currentQuestion +1;
-    if(nextQuestion>2)(
-      nextQuestion = 2
-    )
     setCurrentQuestion(nextQuestion);
   }
 
-  if(currentQuestion!=FIRST_QUESTION_NUMBER)
+  const finishedSurvey = currentQuestion>FIRST_QUESTION_NUMBER+1
+  const secondQuestion  = currentQuestion==FIRST_QUESTION_NUMBER+1
+
+
+  if(secondQuestion)
   {
-    quizQuestion= (<OpenEndedQuestion></OpenEndedQuestion>)
+    quizQuestion= (<OpenEndedQuestion onSubmit={handleNextQuestion}></OpenEndedQuestion>)
+  }
+
+  if(finishedSurvey)
+  {
+    quizQuestion= (<h1> Survey submitted, thank you!</h1>)
   }
 
 
@@ -31,7 +37,7 @@ function App() {
     <body>
      <Header title="Survey"></Header>
         <div id="survey-questions">
-          <p>Question {currentQuestion}/{NUMBER_OF_QUESTIONS}</p>
+          {!finishedSurvey &&<p>Question {currentQuestion}/{NUMBER_OF_QUESTIONS}</p>}
           {quizQuestion}
         </div>
     </body>

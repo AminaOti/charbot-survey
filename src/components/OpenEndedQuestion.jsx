@@ -10,10 +10,12 @@ export default function OpenEndedQuestion({onSubmit}){
    
     const [isLoading, setIsLoading] = useState(false);
     const [chatLog, setChatLog] = useState([]);
-    const [displaySubmit, setdisplaySubmit] = useState(false);
+    const [chatFinsihed, setChatFinsihed] = useState(false);
+    const finalQuestion = chatLog.length === MAX_NUMBER_OF_QUESTIONS +1; 
+
 
     const send = async text => {
-      if(chatLog.length/2 >MAX_NUMBER_OF_QUESTIONS-1 ){
+      if(chatFinsihed ){
         return;
       }
 
@@ -24,13 +26,15 @@ export default function OpenEndedQuestion({onSubmit}){
       setIsLoading(true);
 
       //get data from chatbot
-      const botMesagge = await sendChatToLlm(text, false)
+      const botMesagge = 'hello'//await sendChatToLlm(text, false)
       setChatLog((prevChatLog)=>[...prevChatLog, {user:false, message: botMesagge}])
       setIsLoading(false)
 
-      if(chatLog.length === 4 ){
-        setdisplaySubmit(true);
+      if(finalQuestion ){
+        setChatFinsihed(true);
+        return;
       }
+
       };
 
 
@@ -45,8 +49,8 @@ export default function OpenEndedQuestion({onSubmit}){
                   </div>               
                 ))}
                 {isLoading &&<p>...watson is thinking</p>}
-                 <Input onSend={send} finishedQuestions={displaySubmit}></Input>
-                {displaySubmit&&<button onClick={onSubmit}> Sumbit </button>}
+                 <Input onSend={send} finishedQuestions={chatFinsihed}></Input>
+                {chatFinsihed&&<button onClick={onSubmit}> Sumbit </button>}
             </div>
            
             </>

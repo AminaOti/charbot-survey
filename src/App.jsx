@@ -8,19 +8,18 @@ const NUMBER_OF_QUESTIONS = 2;
 const FIRST_QUESTION_NUMBER = 1;
 
 
-
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState(FIRST_QUESTION_NUMBER);
-  let quizQuestion = (<RatingScaleQuestion onNext={handleNextQuestion}></RatingScaleQuestion>)
+  const finishedSurvey = currentQuestion>FIRST_QUESTION_NUMBER+1
+  const secondQuestion  = currentQuestion==FIRST_QUESTION_NUMBER+1
 
   function handleNextQuestion(){
     let nextQuestion = currentQuestion +1;
     setCurrentQuestion(nextQuestion);
   }
 
-  const finishedSurvey = currentQuestion>FIRST_QUESTION_NUMBER+1
-  const secondQuestion  = currentQuestion==FIRST_QUESTION_NUMBER+1
 
+  let quizQuestion = (<RatingScaleQuestion onNext={handleNextQuestion}></RatingScaleQuestion>)
 
   if(secondQuestion)
   {

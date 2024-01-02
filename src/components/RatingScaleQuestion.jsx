@@ -65,7 +65,7 @@ export default function RatingScaleQuestion({onNext, updateRating}){
     return(
       <>
         <div id="rating-scale-question">
-             <h1  > How would you rate your expereince?</h1>
+             <h1> How would you rate your expereince?</h1>
               <StyledRating
               name="highlight-selected-only"
               defaultValue={2}

@@ -27,8 +27,7 @@ export default function OpenEndedQuestion({onSubmit, rating}){
 
       //get data from chatbot
       const questionNumber = chatLog.length/2;
-      console.log(`question number ${questionNumber}`)
-      const botMesagge = await sendChatToLlm(text, rating, isFinalQuestion, questionNumber)
+      const botMesagge =  await sendChatToLlm(text, rating, isFinalQuestion, questionNumber)
       setChatLog((prevChatLog)=>[...prevChatLog, {user:false, message: botMesagge}])
       setIsLoading(false)
 

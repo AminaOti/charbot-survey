@@ -1,8 +1,11 @@
 // import './App.css'
+import './globals.scss';
 import {useState,useRef} from 'react'
 import Header from './components/Header';
 import RatingScaleQuestion from './components/RatingScaleQuestion';
 import OpenEndedQuestion from './components/OpenEndedQuestion';
+import { Button } from '@carbon/react';
+import { Add } from '@carbon/icons-react';
 
 const NUMBER_OF_QUESTIONS = 2;
 const FIRST_QUESTION_NUMBER = 1;
@@ -40,6 +43,7 @@ function App() {
     <body>
      <Header title="Survey"></Header>
         <div id="survey-questions">
+          <Button renderIcon={Add}> Hello react</Button>
           {!finishedSurvey &&<p>Question {currentQuestion}/{NUMBER_OF_QUESTIONS}</p>}
           {quizQuestion}
         </div>
